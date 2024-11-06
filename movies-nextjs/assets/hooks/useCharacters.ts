@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {Nullable} from "@/assets/types";
 
-export const useCharacters = (): null | CharacterType[] => {
-    const [characters, setCharacters] = useState<null | CharacterType[]>(null)
+export const useCharacters = (): Nullable<CharacterType[]> => {
+    const [characters, setCharacters] = useState<Nullable<CharacterType[]>>(null)
 
     useEffect(() => {
         axios.get('https://rickandmortyapi.com/api/character')
