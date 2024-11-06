@@ -1,16 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
-import {useEffect, useState} from "react";
-import axios from "axios";
+import {useCharacters} from "@/assets/hooks/useCharacters";
 
 export default function Characters() {
-    const [characters, setCharacters] = useState<null | CharacterType[]>(null)
-
-    useEffect(() => {
-        axios.get('https://rickandmortyapi.com/api/character')
-            .then(res => setCharacters(res.data.results))
-    }, []);
+    const characters = useCharacters()
 
     return (
         <>
@@ -35,9 +29,3 @@ export default function Characters() {
     );
 }
 
-//types
-type CharacterType = {
-    id: number
-    name: string
-    image: string
-}
