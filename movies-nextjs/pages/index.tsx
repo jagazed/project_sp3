@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import styles from "@/styles/Home.module.css";
 import {HeadMeta} from "@/components/HeadMeta/HeadMeta";
 import {Navbar} from "@/components/Navbar/Navbar";
+import {getLayout} from "@/components/Layout/Layout";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,15 +16,10 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export default function Home() {
+function Home() {
   return (
     <>
       <HeadMeta title={'Create Next App'} />
-      <div
-        className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
-      >
-        <Navbar />
-        <main className={styles.main}>
           <Image
             className={styles.logo}
             src="/next.svg"
@@ -64,7 +60,6 @@ export default function Home() {
               Read our docs
             </a>
           </div>
-        </main>
         <footer className={styles.footer}>
           <a
             href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -109,7 +104,9 @@ export default function Home() {
             Go to nextjs.org →
           </a>
         </footer>
-      </div>
     </>
   );
 }
+
+Home.getLayout = getLayout
+export default Home
